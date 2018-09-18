@@ -5,6 +5,7 @@
             <i class="fas fa-chevron-left" @click="prevSlide"></i>
             <i class="fas fa-chevron-right" @click="nextSlide"></i>
         </div>
+        <p>Index: {{index}} Slide: {{ (-2)%7 }}</p>
     </div>
 </template>
 
@@ -18,22 +19,22 @@ export default {
     data() {
         return {
             imageLink: './img/',
-            index: 1,
-            slides: 7
+            index: 3,
+            slides: [0, 1, 2, 3, 4, 5, 6]
         }
     },
     methods: {
         nextSlide() {
-            if (this.index == 7) {
-                this.index = 1;
+            if (this.index == 6) {
+                this.index = 0;
             } else {
                 this.index++;
             }
             console.log('Index', this.index);
         },
         prevSlide() {
-            if (this.index == 1) {
-                this.index = 7;
+            if (this.index == 0) {
+                this.index = 6;
             } else {
                 this.index--;
             }

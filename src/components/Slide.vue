@@ -4,15 +4,16 @@
             :class="{
                 'slide-img': true,
                 currentSlide: slide == index,
-                'right-1': slide == index + 1,
-                'left-1': slide == index - 1,
-                'left-2': slide == index - 2,
-                'right-2': slide == index + 2,
-                'left-3': slide == index - 3,
-                'right-3': slide == index + 3}"
+                'right-1': slide == (index + 1) % 7,
+                'left-1': slide == (index - 1) % 7,
+                'right-2': slide == (index + 2) % 7,
+                'left-2': slide == (index - 2) % 7,
+                'right-3': slide == (index + 3) % 7,
+                'left-3': slide == (index - 3) % 7}"
             :id="'slide'+slide"
             v-for="slide in slides"
-            :src="imageLink + 'slide' + slide + '.jpg'">
+            :src="imageLink + 'slide' + slide + '.jpg'"
+        >
     </div>
 </template>
 

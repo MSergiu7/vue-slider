@@ -1,11 +1,10 @@
 <template lang="html">
     <div class="carousel">
-        <app-slide :index="index" :slides="slides" :imageLink="imageLink"></app-slide>
+        <app-slide :index="index" :slides="slides" :imageLink="imageLink" :mod="mod"></app-slide>
         <div class="navigation">
             <i class="fas fa-chevron-left" @click="prevSlide"></i>
             <i class="fas fa-chevron-right" @click="nextSlide"></i>
         </div>
-        <p>Index: {{index}} Slide: {{ (-2)%7 }}</p>
     </div>
 </template>
 
@@ -19,11 +18,15 @@ export default {
     data() {
         return {
             imageLink: './img/',
-            index: 3,
+            index: 0,
             slides: [0, 1, 2, 3, 4, 5, 6]
         }
     },
     methods: {
+        mod(a, b) {
+        	var m = (( a % b) + b) % b;
+        	return m < 0 ? m + Math.abs(b) : m;
+        },
         nextSlide() {
             if (this.index == 6) {
                 this.index = 0;
